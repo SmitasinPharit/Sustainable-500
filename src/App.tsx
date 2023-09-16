@@ -1,6 +1,6 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+// import reactLogo from "./assets/react.svg";
+// import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
@@ -16,19 +16,21 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a> */}
       {/* </div> */}
-      <h1 className="title">Sustainable 500</h1>
+      <h1 className="title">
+        Sustainable <span className="strike">500</span>
+      </h1>
+      <p className="subheading">
+        Dive into a web application that rates the economic sustainability of
+        every company on the S&P 500. With sleek visualizations and
+        comprehensive data analytics, Sustainable 500 allows you to make
+        informed investment decisions that align with your financial goals.
+      </p>
+      <p className="user-instructions">Enter the ticker for the company you would like to learn about.</p>
       <div className="card">
         {/* <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          LEARN MORE
         </button> */}
-        <p className="subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at
-        ullamcorper sapien.</p>
       </div>
-      <p className="project-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at
-        ullamcorper sapien. Morbi eleifend venenatis lorem vitae euismod. Cras
-        ac laoreet justo. Mauris ut iaculis eros. Integer non elementum nunc.
-      </p>
     </>
   );
 }
