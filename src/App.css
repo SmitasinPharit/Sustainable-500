@@ -34,9 +34,13 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 1em;
 }
 
-.read-the-docs {
+.subheading {
+}
+
+.project-description {
   color: #888;
+  padding: 1em;
 }
