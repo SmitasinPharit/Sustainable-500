@@ -53,6 +53,8 @@
 .strike {
   width: 100%;
   border-bottom: solid 2px black;
+  border-right: solid 2px black;
+  padding-right: 10px;
 }
 /* h1:after {
   content: "";
