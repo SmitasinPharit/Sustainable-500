@@ -48,7 +48,8 @@ def updateJSON(data: dict, ticker: str) -> bool:
         json_data = {"esgChart": {}}
     
     if ticker in json_data["esgChart"]:
-        return False # TODO: Maybe check for new changes
+        if json_data["esgChart"][ticker] == data["esgChart"]["result"]
+            return False
 
     json_data["esgChart"][ticker] = data["esgChart"]["result"]
     
