@@ -21,13 +21,18 @@ function App() {
         Sustainable <span className="strike">500</span>
       </h1>
       <p className="subheading">
-        Dive into a web application that rates the economic sustainability of
-        every company on the <b>S&P 500</b>. With sleek visualizations and
-        comprehensive data analytics, Sustainable 500 allows you to make
-        informed investment decisions that align with your financial goals.
+        Dive into a single page web application that retrieves the
+        sustainability of every company on the <b>S&P 500</b>. With concise
+        visualizations and simple design, Sustainable 500 allows you to make
+        informed investment decisions based off the company's ESG score.
+      </p>
+      <p className="subheading">
+        <b>What is an ESG score?</b> ESG stands for Environmental, Social, and
+        Governance, and is a measure of how well a company addresses risks and
+        concerts related to the three categories.
       </p>
       <p className="user-instructions">
-        Enter the ticker for the company you would like to learn about:
+        Enter a ticker to retrieve a company's ESG score:
       </p>
       <div className="main">
         <div className="search">
@@ -41,9 +46,9 @@ function App() {
         </div>
         <List input={inputText} setSelectedCompany={setSelectedCompanyValue} />
       </div>
-        <p className="esg-text">
+      {/* <p className="esg-text">
         ESG (Environment, Social, and Governance) Score:
-        </p>
+      </p> */}
       <div className="card">{selectedCompnayValue}</div>
     </>
   );
