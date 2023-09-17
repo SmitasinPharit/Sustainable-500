@@ -48,7 +48,7 @@ def updateJSON(data: dict, ticker: str) -> bool:
         json_data = {"esgChart": {}}
     
     if ticker in json_data["esgChart"]:
-        if json_data["esgChart"][ticker] == data["esgChart"]["result"]
+        if json_data["esgChart"][ticker] == data["esgChart"]["result"]:
             return False
 
     json_data["esgChart"][ticker] = data["esgChart"]["result"]
@@ -58,8 +58,42 @@ def updateJSON(data: dict, ticker: str) -> bool:
     json_file.close()
 
     return True
+
+def readJSONSimple() -> dict:
+    ret = None
+    try:
+        json_file = open("data/SimpleESG.json", 'r')
+        ret = json.load(json_file)
+
+        json_file.close()
+    except FileNotFoundError:
+        print("ERROR: The JSON file was not found.")
+    
+    return ret
+
+# Returns a much more simpler JSON file (Less frightening to work with)
+# TEMP
+def updateJSONSimple(data: dict, ticker: str) -> bool:
+    json_data = readJSONSimple()
+
+    if json_data == None:
+        json_data = {}
+
+    if ticker in json_data:
+        if json_data[ticker] == data["esgChart"]["result"][0]["symbolSeries"]["esgScore"][-1]:
+            return False
+
+    json_data[ticker] = data["esgChart"]["result"][0]["symbolSeries"]["esgScore"][-1]
+
+    json_file = open("data/Simple_ESG.json", "w")
+    json.dump(json_data, json_file)
+    json_file.close()
+
+    return True
     
 if __name__ == "__main__":
     # Example calls
     data = requestJSON("AAPL")
-    updateJSON(data, "AAPl")
+    updateJSONSimple(data, "AAPL")
+    print(data["esgChart"]["result"][0]["symbolSeries"]["esgScore"][-1])
+    #updateJSON(data, "AAPl")
