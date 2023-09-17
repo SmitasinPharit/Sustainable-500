@@ -1,14 +1,18 @@
 import { React, useState } from "react";
 import TextField from "@mui/material/TextField";
 import List from ".//Components/List.js";
+import data from "./data/Simple_ESG.json";
 import "./App.css";
 
 function App() {
   const [inputText, setInputText] = useState("");
+  const [selectedCompnayValue, setSelectedCompanyValue] = useState("");
+
   let inputHandler = (e) => {
     //convert input text to lower case
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
+    setSelectedCompanyValue("");
   };
 
   return (
@@ -35,9 +39,9 @@ function App() {
             label="Search"
           />
         </div>
-        <List input={inputText} />
+        <List input={inputText} setSelectedCompany={setSelectedCompanyValue} />
       </div>
-      <div className="card"></div>
+      <div className="card">{selectedCompnayValue}</div>
     </>
   );
 }

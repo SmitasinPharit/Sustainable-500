@@ -36,9 +36,10 @@
 
 .card {
   position: center;
-  padding: 10em;
-  padding-bottom: 50em;
+  padding: 1em;
+  padding-bottom: 1em;
   background-color: #282828;
+  /* font-size: 50px; */
 }
 
 .subheading {
@@ -55,7 +56,7 @@
 }
 
 .user-instructions {
-  text-align: left;
+  text-align: center;
   color: #282828;
   padding: 0;
   letter-spacing: 0px;
