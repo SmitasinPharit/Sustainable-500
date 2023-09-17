@@ -7,13 +7,15 @@ const useFetchData = (input) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('data.json');
+        const response = await fetch("data.json");
         const jsonData = await response.json();
-        const filteredData = jsonData.filter(item => item.ticker.toLowerCase() === input);
+        const filteredData = jsonData.filter(
+          (item) => item.ticker.toLowerCase() === input
+        );
         setData(filteredData[0]); // Assuming there's only one matching result
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         setLoading(false);
       }
     };

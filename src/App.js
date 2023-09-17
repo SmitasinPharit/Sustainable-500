@@ -41,6 +41,9 @@ function App() {
         </div>
         <List input={inputText} setSelectedCompany={setSelectedCompanyValue} />
       </div>
+        <p className="esg-text">
+        ESG (Environment, Social, and Governance) Score:
+        </p>
       <div className="card">{selectedCompnayValue}</div>
     </>
   );
