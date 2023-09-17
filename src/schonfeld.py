@@ -62,7 +62,7 @@ def updateJSON(data: dict, ticker: str) -> bool:
 def readJSONSimple() -> dict:
     ret = None
     try:
-        json_file = open("data/SimpleESG.json", 'r')
+        json_file = open("data/Simple_ESG.json", 'r')
         ret = json.load(json_file)
 
         json_file.close()
@@ -82,8 +82,12 @@ def updateJSONSimple(data: dict, ticker: str) -> bool:
     if ticker in json_data:
         if json_data[ticker] == data["esgChart"]["result"][0]["symbolSeries"]["esgScore"][-1]:
             return False
-
-    json_data[ticker] = data["esgChart"]["result"][0]["symbolSeries"]["esgScore"][-1]
+    
+    try:
+        json_data[ticker] = data["esgChart"]["result"][0]["symbolSeries"]["esgScore"][-1]
+    except KeyError:
+        print(ticker, " has no current visible esgScore")
+        return False
 
     json_file = open("data/Simple_ESG.json", "w")
     json.dump(json_data, json_file)
@@ -93,7 +97,14 @@ def updateJSONSimple(data: dict, ticker: str) -> bool:
     
 if __name__ == "__main__":
     # Example calls
-    data = requestJSON("AAPL")
-    updateJSONSimple(data, "AAPL")
-    print(data["esgChart"]["result"][0]["symbolSeries"]["esgScore"][-1])
+    with open("data/tickerToName.json", 'r') as f:
+        json_f = json.load(f)
+
+        for name in json_f:
+            print(name)
+            data = requestJSON(json_f[name])
+            updateJSONSimple(data, json_f[name])
+
+    #data = requestJSON("AAPL")
+    #updateJSONSimple(data, "AAPL")
     #updateJSON(data, "AAPl")
